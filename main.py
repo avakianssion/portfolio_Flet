@@ -1,10 +1,11 @@
 import flet
-from flet import AppBar, ElevatedButton, Page, Text, View, colors
+from flet import AppBar, ElevatedButton, Page, Text, View, colors, Image
 
 
 def main(page: Page):
     page.title = "Home"
 
+ 
     print("Initial route:", page.route)
 
     def route_change(e):
@@ -17,11 +18,11 @@ def main(page: Page):
                     AppBar(title=Text("Personal Portfolio")),
                     ElevatedButton("About", on_click=open_settings),
                     ElevatedButton("Projects", on_click=open_projects),
-
+                    ElevatedButton("Resume", on_click=open_resume),
                 ],
             )
         )
-        
+
         if page.route == "/About":
             page.views.append(
                 View(
@@ -30,9 +31,12 @@ def main(page: Page):
                         AppBar(title=Text("About"), bgcolor=colors.SURFACE_VARIANT),
                         Text("About Page!", style="bodyMedium"),
                     ],
+                scroll="always"
                 )
             )
+
         if page.route == "/Projects":
+            page.bgcolor = colors.AMBER_100            
             page.views.append(
                 View(
                     "/Projects",
@@ -40,21 +44,32 @@ def main(page: Page):
                         AppBar(title=Text("Projects"), bgcolor=colors.SURFACE_VARIANT),
                         Text("Projects Page!", style="bodyMedium"),
                     ],
+                scroll="always"
                 )
             )
-        # if page.route == "/settings/mail":
-        #     page.views.append(
-        #         View(
-        #             "/settings/mail",
-        #             [
-        #                 AppBar(
-        #                     title=Text("Mail Settings"), bgcolor=colors.SURFACE_VARIANT
-        #                 ),
-        #                 Text("Mail settings!"),
-        #             ],
-        #         )
-        #     )
+        if page.route == "/Resume":
+            img = Image(
+                src="Images/resume.jpg",
+                # width=1000,
+                # height=1500,
+                fit="fill",
+                )
+
+            page.views.append(
+                View(
+                    "/Resume",
+                    [
+                        AppBar(title=Text("Resume"), bgcolor=colors.SURFACE_VARIANT),
+                        img,  
+                    ],
+                padding= 50,
+                scroll="always"
+                )
+            )
+
+
         page.update()
+
 
     def view_pop(e):
         print("View pop:", e.view)
@@ -70,8 +85,14 @@ def main(page: Page):
 
     def open_settings(e):
         page.go("/About")
+    def open_resume(e):
+        page.go("/Resume")
+ 
 
     page.go(page.route)
 
 
-flet.app(target=main, view=flet.WEB_BROWSER)
+flet.app(
+    target=main, view=flet.WEB_BROWSER,
+    assets_dir="assets" 
+    )
