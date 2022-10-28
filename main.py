@@ -1,11 +1,10 @@
 import flet
-from flet import AppBar, ElevatedButton, Page, Text, View, colors, Image, NavigationRail
+from flet import AppBar, ElevatedButton,OutlinedButton, Page, Text, View, colors, Image, Container, Row, alignment
 
 
 def main(page: Page):
     page.title = "Home"
-
- 
+    
     print("Initial route:", page.route)
 
     def route_change(e):
@@ -15,10 +14,31 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian"), center_title=True),
-                    ElevatedButton("About", on_click=open_settings),
-                    ElevatedButton("Projects", on_click=open_projects),
-                    ElevatedButton("Experience", on_click=open_experience),
+                    AppBar(title=Text("Sion Avakian", size=50), center_title=True),
+                    Row(
+                        [
+                        Container(
+                            content=OutlinedButton("About", on_click=open_settings),
+                            alignment=alignment.center,
+                            width=150,
+                            height=150,
+                        ),
+                        Container(
+                            content = OutlinedButton("Projects", on_click=open_projects),
+                            alignment=alignment.center,
+                            width=150,
+                            height=150,
+                        ),
+                        Container(
+                            content=OutlinedButton("Experience", on_click=open_experience),
+                            alignment=alignment.center,
+                            width=150,
+                            height=150,
+                        ),
+                        ],
+                        alignment="center",
+
+                    )
                 ],
             ),
         )
@@ -28,15 +48,15 @@ def main(page: Page):
                 View(
                     "/About",
                     [
-                        AppBar(title=Text("About"), bgcolor=colors.SURFACE_VARIANT),
+                        AppBar(title=Text("About", color=colors.RED_200), bgcolor=colors.LIGHT_BLUE_700),
                         Text("About Page!", style="bodyMedium"),
                     ],
-                scroll="always"
+                scroll="always",
+                bgcolor=colors.RED
                 )
             )
 
         if page.route == "/Projects":
-            page.bgcolor = colors.AMBER_100            
             page.views.append(
                 View(
                     "/Projects",
@@ -63,11 +83,13 @@ def main(page: Page):
                         img,  
                     ],
                 padding= 50,
-                scroll="always"
+                scroll="always",
+                bgcolor=colors.RED
+
                 )
             )
 
-
+        page.bgcolor=colors.RED_ACCENT
         page.update()
 
 
