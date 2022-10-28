@@ -1,5 +1,5 @@
 import flet
-from flet import AppBar, ElevatedButton, Page, Text, View, colors, Image
+from flet import AppBar, ElevatedButton, Page, Text, View, colors, Image, NavigationRail
 
 
 def main(page: Page):
@@ -15,12 +15,12 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Personal Portfolio")),
+                    AppBar(title=Text("Sion Avakian"), center_title=True),
                     ElevatedButton("About", on_click=open_settings),
                     ElevatedButton("Projects", on_click=open_projects),
-                    ElevatedButton("Resume", on_click=open_resume),
+                    ElevatedButton("Experience", on_click=open_experience),
                 ],
-            )
+            ),
         )
 
         if page.route == "/About":
@@ -47,7 +47,7 @@ def main(page: Page):
                 scroll="always"
                 )
             )
-        if page.route == "/Resume":
+        if page.route == "/Experience":
             img = Image(
                 src="Images/resume.jpg",
                 # width=1000,
@@ -57,9 +57,9 @@ def main(page: Page):
 
             page.views.append(
                 View(
-                    "/Resume",
+                    "/Experience",
                     [
-                        AppBar(title=Text("Resume"), bgcolor=colors.SURFACE_VARIANT),
+                        AppBar(title=Text("Experience"), bgcolor=colors.SURFACE_VARIANT),
                         img,  
                     ],
                 padding= 50,
@@ -85,8 +85,8 @@ def main(page: Page):
 
     def open_settings(e):
         page.go("/About")
-    def open_resume(e):
-        page.go("/Resume")
+    def open_experience(e):
+        page.go("/Experience")
  
 
     page.go(page.route)
