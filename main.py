@@ -1,5 +1,5 @@
 import flet
-from flet import AppBar, ElevatedButton,OutlinedButton, Page, Text, View, colors, Image, Container, Row, alignment
+from flet import AppBar, ElevatedButton,OutlinedButton, Page, Text, View, colors, Image, Container, Row, alignment, CircleAvatar
 
 
 def main(page: Page):
@@ -14,11 +14,14 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian", size=50), center_title=True),
+                    AppBar(title=Text("Sion Avakian", size=50), center_title=True, bgcolor=colors.LIGHT_BLUE_100),
+                    # Container(CircleAvatar(foreground_image_url="https://avatars.githubusercontent.com/u/5041459?s=88&v=4", content=Text("FF")), alignment="center"),
+                    Container(content=CircleAvatar(foreground_image_url="Images/plato.jpg", content=Text("FF"), width=200, height=200), alignment=alignment.center,padding=20),
+                    # CircleAvatar(foreground_image_url="Images/plato.jpg", content=Text("FF"), alignment="center"),
                     Row(
                         [
                         Container(
-                            content=OutlinedButton("About", on_click=open_settings),
+                            content=OutlinedButton("Contact", on_click=open_settings),
                             alignment=alignment.center,
                             width=150,
                             height=150,
@@ -38,8 +41,12 @@ def main(page: Page):
                         ],
                         alignment="center",
 
-                    )
+                    ),
+
                 ],
+            bgcolor=colors.YELLOW_200,
+            scroll="always"
+
             ),
         )
 
