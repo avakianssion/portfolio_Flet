@@ -1,12 +1,14 @@
-from turtle import onclick
+import webbrowser
 import flet
-from flet import AppBar, FilledTonalButton ,OutlinedButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar,NavigationRail, NavigationRailDestination, FloatingActionButton, Icon, icons, VerticalDivider
+from flet import AppBar, IconButton ,OutlinedButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, ElevatedButton
+import webbrowser
 
 
 
 
 def main(page: Page):
     page.title = "Home"
+    
     
     print("Initial route:", page.route)
     
@@ -19,8 +21,7 @@ def main(page: Page):
 
         print("Route change:", e.route)
         page.views.clear()
-        #Github, Linkedin
-        contact_buttons = Row([])
+
         navigation_buttons = Row(
                             [
                             Container(
@@ -42,16 +43,25 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian", font_family="Montserrat-Regular"), actions=[navigation_buttons], center_title=True),
+                    AppBar(title=Text("Sion Avakian", font_family="Montserrat-Regular"), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),
                     # Container(content=Text("Sion Avakian", size=50, font_family="Montserrat-Regular",color=colors.WHITE),alignment=alignment.center),
                     Column(
-                        [
+                    [
                         Column(
                             [Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
                             Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Montserrat-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
                             ],
-                            )
-                        ],
+                            ),
+                        Row(
+                        [
+                            IconButton(on_click=open_github, icon=icons.CONTACT_PAGE),
+                            IconButton(icon=icons.GITE, on_click=open_linkedin),
+
+
+                        ],alignment="center",
+                        )
+                    ]
+
                     )
                 ],
             bgcolor=colors.BLUE_GREY,
@@ -128,6 +138,16 @@ def main(page: Page):
 
     def open_experience(e):
         page.go("/Experience")
+
+    def open_github(e):
+        print("Go to Github")
+        webbrowser.open_new_tab('https://github.com/avakianssion')
+
+
+    def open_linkedin(e):
+        print("Go to LinkedIn")
+        webbrowser.open_new_tab("https://www.linkedin.com/in/sion-avakian/")
+
 
     page.go(page.route)
 
