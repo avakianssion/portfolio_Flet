@@ -1,5 +1,6 @@
 import flet
-from flet import AppBar, ElevatedButton,OutlinedButton, Page, Text, View, colors, Image, Container, Row, alignment, CircleAvatar
+from flet import AppBar, FilledTonalButton ,OutlinedButton, Page, Text, View, colors, Image, Container, Row, alignment, CircleAvatar,NavigationRail, NavigationRailDestination, FloatingActionButton, Icon, icons, VerticalDivider
+
 
 
 def main(page: Page):
@@ -8,44 +9,76 @@ def main(page: Page):
     print("Initial route:", page.route)
 
     def route_change(e):
+        page.fonts={"Montserrat-Light": "/Fonts/Montserrat-Light.tff",
+                    "Montserrat-Bold": "/Fonts/Montserrat-Bold.ttf",
+                    "Montserrat-Medium": "/Fonts/Montserrat-Medium.tff",
+                    "Montserrat-Regular": "/Fonts/Montserrat-Regular.tff"}
         print("Route change:", e.route)
         page.views.clear()
+        rail = NavigationRail(
+                            selected_index=0,
+                            label_type="all",
+                            # extended=True,
+                            min_width=100,
+                            min_extended_width=400,
+                            height=500,
+                            leading=FloatingActionButton(icon=icons.CREATE, text="Add"),
+                            group_alignment=-0.9,
+                            destinations=[
+                                NavigationRailDestination(
+                                    icon=icons.FAVORITE_BORDER, selected_icon=icons.FAVORITE, label="First"
+                                ),
+                                NavigationRailDestination(
+                                    icon_content=Icon(icons.BOOKMARK_BORDER),
+                                    selected_icon_content=Icon(icons.BOOKMARK),
+                                    label="Second",
+                                ),
+                                NavigationRailDestination(
+                                    icon=icons.SETTINGS_OUTLINED,
+                                    selected_icon_content=Icon(icons.SETTINGS),
+                                    label_content=Text("Settings"),
+                                ),
+                            ],
+                        )
         page.views.append(
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian", size=50), center_title=True, bgcolor=colors.LIGHT_BLUE_100),
-                    # Container(CircleAvatar(foreground_image_url="https://avatars.githubusercontent.com/u/5041459?s=88&v=4", content=Text("FF")), alignment="center"),
-                    Container(content=CircleAvatar(foreground_image_url="Images/plato.jpg", content=Text("FF"), width=200, height=200), alignment=alignment.center,padding=20),
-                    # CircleAvatar(foreground_image_url="Images/plato.jpg", content=Text("FF"), alignment="center"),
+                    # AppBar(title=Text("Sion Avakian", size=50, font_family="Montserrat-Regular", color=colors.WHITE), center_title=True, bgcolor=colors.BLUE_GREY),
+                    Container(content=Text("Sion Avakian", size=50, font_family="Montserrat-Regular",color=colors.WHITE),alignment=alignment.center),
                     Row(
                         [
+                        rail,
+                        VerticalDivider(width=1),
                         Container(
-                            content=OutlinedButton("Contact", on_click=open_settings),
+                            content=FilledTonalButton("Contact", on_click=open_settings),
                             alignment=alignment.center,
                             width=150,
                             height=150,
                         ),
                         Container(
-                            content = OutlinedButton("Projects", on_click=open_projects),
+                            content = FilledTonalButton("Projects", on_click=open_projects),
                             alignment=alignment.center,
                             width=150,
                             height=150,
                         ),
                         Container(
-                            content=OutlinedButton("Experience", on_click=open_experience),
+                            content=FilledTonalButton("Experience", on_click=open_experience),
                             alignment=alignment.center,
                             width=150,
                             height=150,
                         ),
                         ],
-                        alignment="center",
+                        alignment="start",
 
                     ),
+                    Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200), alignment=alignment.center,padding=20),
+                    Container(content=Text("Software engineer and computer science enthusiast.", size=25, font_family="Montserrat-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
 
                 ],
-            bgcolor=colors.YELLOW_200,
-            scroll="always"
+            bgcolor=colors.BLUE_GREY,
+            scroll="always",
+    
 
             ),
         )
