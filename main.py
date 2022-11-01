@@ -1,14 +1,11 @@
 import webbrowser
 import flet
-from flet import AppBar, IconButton ,OutlinedButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, ElevatedButton
+from flet import AppBar, IconButton ,FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, GestureDetector
 import webbrowser
-
-
-
+from helper import *
 
 def main(page: Page):
     page.title = "Home"
-    
     
     print("Initial route:", page.route)
     
@@ -25,13 +22,13 @@ def main(page: Page):
         navigation_buttons = Row(
                             [
                             Container(
-                                content = OutlinedButton("Projects", on_click=open_projects),
+                                content = FilledTonalButton("Projects", on_click=open_projects),
                                 alignment=alignment.center,
                                 width=120,
                                 height=20,
                             ),
                             Container(
-                                content=OutlinedButton("Experience", on_click=open_experience),
+                                content=FilledTonalButton("Experience", on_click=open_experience),
                                 alignment=alignment.center,
                                 width=120,
                                 height=20,
@@ -43,22 +40,29 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian", font_family="Montserrat-Regular"), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),
+                    AppBar(title=Text("Sion Avakian", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),
                     # Container(content=Text("Sion Avakian", size=50, font_family="Montserrat-Regular",color=colors.WHITE),alignment=alignment.center),
                     Column(
                     [
                         Column(
-                            [Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
-                            Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Montserrat-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
+                            [
+                                Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
+                                Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Montserrat-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
                             ],
-                            ),
+                        ),
                         Row(
-                        [
-                            IconButton(on_click=open_github, icon=icons.CONTACT_PAGE),
-                            IconButton(icon=icons.GITE, on_click=open_linkedin),
-
-
-                        ],alignment="center",
+                            [   
+                                # IconButton(on_click=open_github, icon=icons.CONTACT_PAGE),
+                                # IconButton(icon=icons.GITE, on_click=open_linkedin),
+                                GestureDetector(
+                                    on_tap = open_github,
+                                    content=Image(src="icons/github.png",width=50, height=50)
+                                ),
+                                GestureDetector(
+                                    on_tap = open_linkedin,
+                                    content=Image(src="icons/linkedin.png",width=50, height=50)
+                                )
+                            ],alignment="center",
                         )
                     ]
 
@@ -71,25 +75,25 @@ def main(page: Page):
 
         )
 
-        if page.route == "/About":
-            page.views.append(
-                View(
-                    "/About",
-                    [
-                        AppBar(title=Text("About", color=colors.RED_200), bgcolor=colors.LIGHT_BLUE_700),
-                        Text("About Page!", style="bodyMedium"),
-                    ],
-                scroll="always",
-                bgcolor=colors.RED
-                )
-            )
+        # if page.route == "/About":
+        #     page.views.append(
+        #         View(
+        #             "/About",
+        #             [
+        #                 AppBar(title=Text("About", color=colors.RED_200), bgcolor=colors.LIGHT_BLUE_700),
+        #                 Text("About Page!", style="bodyMedium"),
+        #             ],
+        #         scroll="always",
+        #         bgcolor=colors.RED
+        #         )
+        #     )
 
         if page.route == "/Projects":
             page.views.append(
                 View(
                     "/Projects",
                     [
-                        AppBar(title=Text("Projects"), bgcolor=colors.SURFACE_VARIANT),
+                        AppBar(title=Text("Projects"), bgcolor=colors.BLUE_GREY_900),
                         Text("Projects Page!", style="bodyMedium"),
                     ],
                 scroll="always",
@@ -99,28 +103,26 @@ def main(page: Page):
                 )
             )
         if page.route == "/Experience":
-            img = Image(
-                src="Images/resume.jpg",
-                # width=1000,
-                # height=1500,
-                fit="fill",
-                )
-
+            experience_images = Row(expand=1, wrap=False, scroll="always")
+            experience_images.controls.append(general_motors_logo)
+            experience_images.controls.append(capgemini_logo)
+            experience_images.controls.append(NSF_logo)
+            experience_images.controls.append(UCI_logo)
+            
             page.views.append(
                 View(
                     "/Experience",
                     [
                         AppBar(title=Text("Experience"), bgcolor=colors.SURFACE_VARIANT),
-                        img,  
-                    ],
-                padding= 50,
-                scroll="always",
-                bgcolor=colors.RED
+                        Row([experience_images])
 
+                    ],
+                bgcolor=colors.BLUE_GREY,
+                scroll="always",
+                padding=50
                 )
             )
 
-        page.bgcolor=colors.RED_ACCENT
         page.update()
 
 
