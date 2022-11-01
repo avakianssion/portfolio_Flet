@@ -1,6 +1,6 @@
 import webbrowser
 import flet
-from flet import AppBar, IconButton ,FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, GestureDetector
+from flet import AppBar, IconButton ,FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, GestureDetector, padding
 import webbrowser
 from helper import *
 
@@ -52,16 +52,16 @@ def main(page: Page):
                         ),
                         Row(
                             [   
-                                # IconButton(on_click=open_github, icon=icons.CONTACT_PAGE),
-                                # IconButton(icon=icons.GITE, on_click=open_linkedin),
+                               GestureDetector(
+                                    on_tap = open_linkedin,
+                                    content=Image(src="icons/linkedin1010.png",width=50, height=50)
+                                
+                                ),
                                 GestureDetector(
                                     on_tap = open_github,
                                     content=Image(src="icons/github.png",width=50, height=50)
                                 ),
-                                GestureDetector(
-                                    on_tap = open_linkedin,
-                                    content=Image(src="icons/linkedin.png",width=50, height=50)
-                                )
+
                             ],alignment="center",
                         )
                     ]
@@ -70,56 +70,96 @@ def main(page: Page):
                 ],
             bgcolor=colors.BLUE_GREY,
             scroll="always",
-
             ),
 
         )
-
-        # if page.route == "/About":
-        #     page.views.append(
-        #         View(
-        #             "/About",
-        #             [
-        #                 AppBar(title=Text("About", color=colors.RED_200), bgcolor=colors.LIGHT_BLUE_700),
-        #                 Text("About Page!", style="bodyMedium"),
-        #             ],
-        #         scroll="always",
-        #         bgcolor=colors.RED
-        #         )
-        #     )
 
         if page.route == "/Projects":
             page.views.append(
                 View(
                     "/Projects",
                     [
-                        AppBar(title=Text("Projects"), bgcolor=colors.BLUE_GREY_900),
-                        Text("Projects Page!", style="bodyMedium"),
-                    ],
-                scroll="always",
-                bgcolor=colors.YELLOW_ACCENT_200
+                        AppBar(title=Text("Projects", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
+                    Column(
+                    [
+                        Column(
+                            [
+                                   Row(
+                                    [
+                                        Container(content=general_motors_logo, width=180,height=180),
+                                        Text("Working on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                    ], alignment="start"),
+                                   
+                                   Row(
+                                    [
+                                        Container(content=capgemini_logo, width=180,height=180),
+                                        Text("Worked on internal communication hub system",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                    ],alignment="start"),
+                                   Row(
+                                    [
+                                        Container(content=NSF_logo, width=180,height=180),
+                                        Text("Research project on online mis-information",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                     
+                                    ],alignment="start"),
+                                   Row(
+                                    [
+                                        Container(content=UCI_logo, width=180,height=180),
+                                        Text("Rsearch project on the use of data science in community organizations",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25) 
+                                    ],
+                                    alignment="start"),
+                            ],
+                        ),
 
-                
+                    ]
+                    )
+                    ],
+                bgcolor=colors.ORANGE_200,
+                scroll="always",
+                padding=100
                 )
             )
         if page.route == "/Experience":
-            experience_images = Row(expand=1, wrap=False, scroll="always")
-            experience_images.controls.append(general_motors_logo)
-            experience_images.controls.append(capgemini_logo)
-            experience_images.controls.append(NSF_logo)
-            experience_images.controls.append(UCI_logo)
-            
             page.views.append(
                 View(
                     "/Experience",
                     [
-                        AppBar(title=Text("Experience"), bgcolor=colors.SURFACE_VARIANT),
-                        Row([experience_images])
+                        AppBar(title=Text("Experience", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
+                    Column(
+                    [
+                        Column(
+                            [
+                                   Row(
+                                    [
+                                        Container(content=general_motors_logo, width=180,height=180),
+                                        Text("Working on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                    ], alignment="start"),
+                                   
+                                   Row(
+                                    [
+                                        Container(content=capgemini_logo, width=180,height=180),
+                                        Text("Worked on internal communication hub system",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                    ],alignment="start"),
+                                   Row(
+                                    [
+                                        Container(content=NSF_logo, width=180,height=180),
+                                        Text("Research project on online mis-information",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                     
+                                    ],alignment="start"),
+                                   Row(
+                                    [
+                                        Container(content=UCI_logo, width=180,height=180),
+                                        Text("Rsearch project on the use of data science in community organizations",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25) 
+                                    ],
+                                    alignment="start"),
+                            ],
+                        ),
 
+                    ]
+                    )
                     ],
-                bgcolor=colors.BLUE_GREY,
+                bgcolor=colors.ORANGE_200,
                 scroll="always",
-                padding=50
+                padding=100
                 )
             )
 
