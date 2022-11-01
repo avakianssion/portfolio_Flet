@@ -11,10 +11,9 @@ def main(page: Page):
     
 
     def route_change(e):
-        page.fonts={"Montserrat-Light": "/Fonts/Montserrat-Light.tff",
-                    "Montserrat-Bold": "/Fonts/Montserrat-Bold.ttf",
-                    "Montserrat-Medium": "/Fonts/Montserrat-Medium.tff",
-                    "Montserrat-Regular": "/Fonts/Montserrat-Regular.tff"}
+        page.fonts={
+                    "Inconsolata-Light": "/Fonts/Inconsolata-Light.ttf",
+                    "Inconsolata-Medium": "/Fonts/Inconsolata-Medium.ttf",}
 
         print("Route change:", e.route)
         page.views.clear()
@@ -40,14 +39,14 @@ def main(page: Page):
             View(
                 "/",
                 [
-                    AppBar(title=Text("Sion Avakian", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),
+                    AppBar(title=Text("Sion Avakian", font_family="Inconsolata-Medium", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),
                     # Container(content=Text("Sion Avakian", size=50, font_family="Montserrat-Regular",color=colors.WHITE),alignment=alignment.center),
                     Column(
                     [
                         Column(
                             [
                                 Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
-                                Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Montserrat-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
+                                Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Inconsolata-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
                             ],
                         ),
                         Row(
@@ -79,39 +78,44 @@ def main(page: Page):
                 View(
                     "/Projects",
                     [
-                        AppBar(title=Text("Projects", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
+                        AppBar(title=Text("Projects", font_family="Inconsolata-Medium", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
+                    
                     Column(
-                    [
-                        Column(
-                            [
-                                   Row(
-                                    [
-                                        Container(content=general_motors_logo, width=180,height=180),
-                                        Text("Working on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
-                                    ], alignment="start"),
-                                   
-                                   Row(
-                                    [
-                                        Container(content=capgemini_logo, width=180,height=180),
-                                        Text("Worked on internal communication hub system",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
-                                    ],alignment="start"),
-                                   Row(
-                                    [
-                                        Container(content=NSF_logo, width=180,height=180),
-                                        Text("Research project on online mis-information",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
-                                     
-                                    ],alignment="start"),
-                                   Row(
-                                    [
-                                        Container(content=UCI_logo, width=180,height=180),
-                                        Text("Rsearch project on the use of data science in community organizations",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25) 
-                                    ],
-                                    alignment="start"),
-                            ],
-                        ),
-
-                    ]
-                    )
+                        [
+                                Row(
+                                [
+                                    GestureDetector
+                                    (
+                                        on_tap = open_phoenix,
+                                        content = Container(content=Phoenix_logo, width=180,height=180)
+                                    ),
+                                    Text("Phoenix Robotics",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                ], alignment="start"
+                                ),
+                                
+                                Row(
+                                [
+                                    GestureDetector
+                                    (
+                                        on_tap = open_RSNA,
+                                        content = Container(content=RSNA_logo, width=180,height=180)
+                                    ),
+                                    Text("RSNA Pneumonia Detection",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                ],alignment="start"
+                                ),
+                                Row(
+                                [
+                                    GestureDetector
+                                    (
+                                        on_tap = open_mRNA,
+                                        content = Container(content=Vaccine_logo, width=180,height=180)
+                                    ),
+                                    Text("COVID-19 mRNA Vaccine Degradation Prediction",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                    
+                                ],alignment="start"
+                                ),
+                        ],alignment="center",
+                    ),
                     ],
                 bgcolor=colors.ORANGE_200,
                 scroll="always",
@@ -123,7 +127,7 @@ def main(page: Page):
                 View(
                     "/Experience",
                     [
-                        AppBar(title=Text("Experience", font_family="Montserrat-Regular", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
+                        AppBar(title=Text("Experience", font_family="Inconsolata-Medium", color = colors.WHITE, size = 40), actions=[navigation_buttons], center_title=True, bgcolor=colors.BLUE_GREY_900),                  
                     Column(
                     [
                         Column(
@@ -131,24 +135,24 @@ def main(page: Page):
                                    Row(
                                     [
                                         Container(content=general_motors_logo, width=180,height=180),
-                                        Text("Working on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Working on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     ], alignment="start"),
                                    
                                    Row(
                                     [
                                         Container(content=capgemini_logo, width=180,height=180),
-                                        Text("Worked on internal communication hub system",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Worked on internal communication hub system",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     ],alignment="start"),
                                    Row(
                                     [
                                         Container(content=NSF_logo, width=180,height=180),
-                                        Text("Research project on online mis-information",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Research project on online mis-information",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                      
                                     ],alignment="start"),
                                    Row(
                                     [
                                         Container(content=UCI_logo, width=180,height=180),
-                                        Text("Rsearch project on the use of data science in community organizations",font_family="Montserrat-Light", color = colors.BLUE_900, size = 25) 
+                                        Text("Rsearch project on the use of data science in community organizations",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25) 
                                     ],
                                     alignment="start"),
                             ],
@@ -185,10 +189,21 @@ def main(page: Page):
         print("Go to Github")
         webbrowser.open_new_tab('https://github.com/avakianssion')
 
-
     def open_linkedin(e):
         print("Go to LinkedIn")
         webbrowser.open_new_tab("https://www.linkedin.com/in/sion-avakian/")
+
+    def open_phoenix(e):
+        print("Go to Phoenix")
+        webbrowser.open_new_tab("https://twitter.com/phoenixrobotics?lang=en")
+
+    def open_RSNA(e):
+        print("Go to RSNA")
+        webbrowser.open_new_tab("https://github.com/avakianssion/RSNA-Pneumonia-Detection-Challenge")
+
+    def open_mRNA(e):
+        print("Go to mRNA")
+        webbrowser.open_new_tab("https://github.com/avakianssion/COVID-19-mRNA-Vaccine-Degradation-Prediction")
 
 
     page.go(page.route)

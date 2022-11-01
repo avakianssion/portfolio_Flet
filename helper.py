@@ -32,5 +32,25 @@ UCI_logo = Image(
     fit="contain",
     border_radius=border_radius.all(10),
 )
-
+Vaccine_logo = Image(
+    src="Images/Vaccine.png",
+    width=250,
+    height=250,
+    fit="contain",
+    border_radius=border_radius.all(10),
+)
+RSNA_logo = Image(
+    src="Images/RSNA.png",
+    width=250,
+    height=250,
+    fit="contain",
+    border_radius=border_radius.all(10),
+)
+Phoenix_logo = Image(
+    src="Images/phoenixLogo.png",
+    width=250,
+    height=250,
+    fit="contain",
+    border_radius=border_radius.all(10),
+)
 
