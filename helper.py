@@ -53,4 +53,10 @@ Phoenix_logo = Image(
     fit="contain",
     border_radius=border_radius.all(10),
 )
-
+YPI_logo = Image(
+    src="Images/YPI.jpeg",
+    width=250,
+    height=250,
+    fit="contain",
+    border_radius=border_radius.all(10),
+)

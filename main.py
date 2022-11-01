@@ -1,6 +1,6 @@
 import webbrowser
 import flet
-from flet import AppBar, IconButton ,FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, icons, GestureDetector, padding
+from flet import AppBar, FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, GestureDetector, padding
 import webbrowser
 from helper import *
 
@@ -87,7 +87,7 @@ def main(page: Page):
                                     GestureDetector
                                     (
                                         on_tap = open_phoenix,
-                                        content = Container(content=Phoenix_logo, width=180,height=180)
+                                        content = Container(content=Phoenix_logo, width=180,height=180, padding=20)
                                     ),
                                     Text("Phoenix Robotics",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                 ], alignment="start"
@@ -98,7 +98,7 @@ def main(page: Page):
                                     GestureDetector
                                     (
                                         on_tap = open_RSNA,
-                                        content = Container(content=RSNA_logo, width=180,height=180)
+                                        content = Container(content=RSNA_logo, width=180,height=180, padding=20)
                                     ),
                                     Text("RSNA Pneumonia Detection",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                 ],alignment="start"
@@ -108,7 +108,7 @@ def main(page: Page):
                                     GestureDetector
                                     (
                                         on_tap = open_mRNA,
-                                        content = Container(content=Vaccine_logo, width=180,height=180)
+                                        content = Container(content=Vaccine_logo, width=180,height=180, padding = 20)
                                     ),
                                     Text("COVID-19 mRNA Vaccine Degradation Prediction",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     
@@ -134,27 +134,34 @@ def main(page: Page):
                             [
                                    Row(
                                     [
-                                        Container(content=general_motors_logo, width=180,height=180),
+                                        Container(content=general_motors_logo, width=180,height=180, padding=25),
                                         Text("Software Engineer @ General Motors: \nWorking on Ultifi Platforms for Autonomous and Electric Vehciles",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     ], alignment="start"),
                                    
                                    Row(
                                     [
-                                        Container(content=capgemini_logo, width=180,height=180),
+                                        Container(content=capgemini_logo, width=180,height=180, padding=25),
                                         Text("Software Engineer @ Capgemini: \nWorked on Internal Communication Hub System",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     ],alignment="start"),
                                    Row(
                                     [
-                                        Container(content=NSF_logo, width=180,height=180),
+                                        Container(content=NSF_logo, width=180,height=180, padding=25),
                                         Text("Undergraduate Researcher @ National Science Foundation: \nResearch Project on Online Mis-Information",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                      
                                     ],alignment="start"),
                                    Row(
                                     [
-                                        Container(content=UCI_logo, width=180,height=180),
+                                        Container(content=UCI_logo, width=180,height=180, padding=25),
                                         Text("Undergraduate Researcher @ UC Irvine Data Science Lab: \nRsearch Project on The Use of Data Science In Community Organizations",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25) 
                                     ],
                                     alignment="start"),
+                                    Row(
+                                    [
+                                        Container(content=YPI_logo, width=180,height=180, padding=25),
+                                        Text("Software Engineering Intern @ UC Youth Policy Institute: \nWorked on Fellow Tracking/Feedback System on MERN Stack",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+
+                                    ],alignment="start"),
+                                    
                             ],
                         ),
 
