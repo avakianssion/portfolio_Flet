@@ -141,18 +141,18 @@ def main(page: Page):
                                    Row(
                                     [
                                         Container(content=capgemini_logo, width=180,height=180),
-                                        Text("Worked on internal communication hub system",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Worked on Internal Communication Hub System",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                     ],alignment="start"),
                                    Row(
                                     [
                                         Container(content=NSF_logo, width=180,height=180),
-                                        Text("Research project on online mis-information",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Research Project on Online Mis-Information",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
                                      
                                     ],alignment="start"),
                                    Row(
                                     [
                                         Container(content=UCI_logo, width=180,height=180),
-                                        Text("Rsearch project on the use of data science in community organizations",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25) 
+                                        Text("Rsearch Project on The Use of Data Science In Community Organizations",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25) 
                                     ],
                                     alignment="start"),
                             ],
