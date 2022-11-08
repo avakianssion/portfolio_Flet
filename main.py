@@ -174,7 +174,7 @@ def main(page: Page):
                                     Row(
                                     [
                                         Container(content=YPI_logo, width=180,height=180, padding=25),
-                                        Text("Software Engineering Intern @ UC Youth Policy Institute: \nWorked on Fellow Tracking/Feedback System on MERN Stack",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                        Text("Software Engineering Intern @ Youth Policy Institute: \nWorked on Fellow Tracking/Feedback System on MERN Stack",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
 
                                     ],alignment="start"),
                                     
