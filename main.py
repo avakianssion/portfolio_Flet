@@ -1,11 +1,12 @@
 import webbrowser
 import flet
-from flet import AppBar, FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, GestureDetector, padding
+from flet import AppBar, FilledTonalButton, Page, Text, View, colors, Image, Container, Row, Column, alignment, CircleAvatar, GestureDetector, padding, TextButton
 import webbrowser
 from helper import *
 
 def main(page: Page):
     page.title = "Home"
+    githhub_text = Text("Find me on Github", size=25, font_family="Inconsolata-Light",color=colors.WHITE)
     
     print("Initial route:", page.route)
     
@@ -17,7 +18,7 @@ def main(page: Page):
 
         print("Route change:", e.route)
         page.views.clear()
-
+    
         navigation_buttons = Row(
                             [
                             Container(
@@ -44,25 +45,20 @@ def main(page: Page):
                     Column(
                     [
                         Column(
-                            [
+                            [                                
                                 Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
                                 Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Inconsolata-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
+
+                                
                             ],
                         ),
-                        Row(
-                            [   
-                               GestureDetector(
-                                    on_tap = open_linkedin,
-                                    content=Image(src="icons/linkedin1010.png",width=50, height=50)
-                                
-                                ),
-                                GestureDetector(
-                                    on_tap = open_github,
-                                    content=Image(src="icons/github.png",width=50, height=50)
-                                ),
-
-                            ],alignment="center",
-                        )
+                         Row(
+                             [   
+                                Container(content=TextButton("Find me on Linkedin", on_click=open_linkedin ),alignment=alignment.center,padding=20),
+                                Container(content=TextButton("Find me on Github", on_click=open_github ),alignment=alignment.center,padding=20),
+                                # Container(content=Markdown(m1, extension_set="gitHubWeb", on_tap_link=open_github, expand=True, selectable=True),alignment=alignment.center,padding=20),
+                             ],alignment="center",
+                         )
                     ]
 
                     )
@@ -194,11 +190,14 @@ def main(page: Page):
 
     def open_github(e):
         print("Go to Github")
-        webbrowser.open_new_tab('https://github.com/avakianssion')
+        # webbrowser.open_new_tab('https://github.com/avakianssion')
+        page.launch_url("https://github.com/avakianssion")
+
 
     def open_linkedin(e):
         print("Go to LinkedIn")
-        webbrowser.open_new_tab("https://www.linkedin.com/in/sion-avakian/")
+        # webbrowser.open_new_tab("https://www.linkedin.com/in/sion-avakian/")
+        page.launch_url("https://www.linkedin.com/in/sion-avakian/")
 
     def open_phoenix(e):
         print("Go to Phoenix")
