@@ -47,23 +47,33 @@ def main(page: Page):
                         Column(
                             [                                
                                 Container(content=CircleAvatar(foreground_image_url="Images/headshot.jpg", content=Text("FF"), width=200, height=200),alignment=alignment.center,padding=20),
-                                Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Inconsolata-Light",color=colors.WHITE),alignment=alignment.center,padding=20),
-
-                                
+                                Container(content=Text("Software Engineer and Computer Science Enthusiast", size=25, font_family="Inconsolata-Light",color=colors.WHITE),alignment=alignment.center,padding=20),  
                             ],
                         ),
                          Row(
                              [   
-                                Container(content=TextButton("Find me on Linkedin", on_click=open_linkedin ),alignment=alignment.center,padding=20),
-                                Container(content=TextButton("Find me on Github", on_click=open_github ),alignment=alignment.center,padding=20),
-                                # Container(content=Markdown(m1, extension_set="gitHubWeb", on_tap_link=open_github, expand=True, selectable=True),alignment=alignment.center,padding=20),
+                                # Container(content=TextButton("Find me on Linkedin", on_click=open_linkedin, ),alignment=alignment.center,padding=20),
+                                # Container(content=TextButton("Find me on Github", on_click=open_github ),alignment=alignment.center,padding=20),
+
+                                TextButton(
+                                    content=Container(
+                                        content=Text("Click for Linkedin", size=18, font_family="Inconsolata-Light",color=colors.WHITE), bgcolor=colors.PURPLE_400, padding=5,
+                                    ),
+                                    on_click=open_linkedin,
+                                ),
+                                TextButton(
+                                    content=Container(
+                                        content=Text("Click for Github", size=18, font_family="Inconsolata-Light",color=colors.WHITE), bgcolor=colors.PURPLE_400, padding=5,
+                                    ),
+                                    on_click=open_github,
+                                ),
                              ],alignment="center",
                          )
                     ]
 
                     )
                 ],
-            bgcolor=colors.BLUE_GREY,
+            bgcolor=colors.BLUE_GREY_700,
             scroll="always",
             ),
 
@@ -80,36 +90,46 @@ def main(page: Page):
                         [
                                 Row(
                                 [
-                                    GestureDetector
-                                    (
-                                        on_tap = open_phoenix,
-                                        content = Container(content=Phoenix_logo, width=180,height=180, padding=20)
+                                    TextButton(
+                                    content=Container(content=Phoenix_logo, padding=5,width=180, height=180),
+                                    on_click=open_phoenix,
                                     ),
-                                    Text("Phoenix Robotics",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                    TextButton(
+                                    content=Container(content=Text("Phoenix Robotics",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25), padding=5,),
+                                    on_click=open_phoenix,
+                                    ),
+
                                 ], alignment="start"
                                 ),
                                 
                                 Row(
                                 [
-                                    GestureDetector
-                                    (
-                                        on_tap = open_RSNA,
-                                        content = Container(content=RSNA_logo, width=180,height=180, padding=20)
+                                    TextButton(
+                                    content=Container(content=RSNA_logo, padding=5,width=180, height=180),
+                                    on_click=open_RSNA,
                                     ),
-                                    Text("RSNA Pneumonia Detection",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                    TextButton(
+                                    content=Container(content=Text("RSNA Pneumonia Detection",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25), padding=5,),
+                                    on_click=open_RSNA,
+                                    ),
+ 
                                 ],alignment="start"
                                 ),
+                                
                                 Row(
                                 [
-                                    GestureDetector
-                                    (
-                                        on_tap = open_mRNA,
-                                        content = Container(content=Vaccine_logo, width=180,height=180, padding = 20)
+                                    TextButton(
+                                    content=Container(content=Vaccine_logo, padding=5, width=180, height=180),
+                                    on_click=open_mRNA,
                                     ),
-                                    Text("COVID-19 mRNA Vaccine Degradation Prediction",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25)
+                                    TextButton(
+                                    content=Container(content=Text("COVID-19 mRNA Vaccine Degradation Prediction",font_family="Inconsolata-Light", color = colors.BLUE_900, size = 25), padding=5,),
+                                    on_click=open_mRNA,
+                                    ),
                                     
                                 ],alignment="start"
                                 ),
+      
                         ],alignment="center",
                     ),
                     ],
