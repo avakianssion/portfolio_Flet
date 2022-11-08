@@ -221,15 +221,21 @@ def main(page: Page):
 
     def open_phoenix(e):
         print("Go to Phoenix")
-        webbrowser.open_new_tab("https://twitter.com/phoenixrobotics?lang=en")
+        # webbrowser.open_new_tab("https://twitter.com/phoenixrobotics?lang=en")
+        page.launch_url("https://twitter.com/phoenixrobotics?lang=en")
+
 
     def open_RSNA(e):
         print("Go to RSNA")
-        webbrowser.open_new_tab("https://github.com/avakianssion/RSNA-Pneumonia-Detection-Challenge")
+        # webbrowser.open_new_tab("https://github.com/avakianssion/RSNA-Pneumonia-Detection-Challenge")
+        page.launch_url("https://github.com/avakianssion/RSNA-Pneumonia-Detection-Challenge")
+
 
     def open_mRNA(e):
         print("Go to mRNA")
-        webbrowser.open_new_tab("https://github.com/avakianssion/COVID-19-mRNA-Vaccine-Degradation-Prediction")
+        # webbrowser.open_new_tab("https://github.com/avakianssion/COVID-19-mRNA-Vaccine-Degradation-Prediction")
+        page.launch_url("https://github.com/avakianssion/COVID-19-mRNA-Vaccine-Degradation-Prediction")
+
 
 
     page.go(page.route)
